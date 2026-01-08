@@ -26,7 +26,7 @@ jobs:
       - name: Run tests
         run: npm run check
 
-  deploy:
+  # deploy:
   #   name: Deploy Application
   #   needs: test
   #   runs-on: self-hosted   # 👈 deploy runs on self-hosted runner
