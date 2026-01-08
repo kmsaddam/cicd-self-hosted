@@ -1,0 +1,46 @@
+# .github/workflows/ci-cd.yml
+name: CI CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Test Application
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm run check
+
+  # deploy:
+  #   name: Deploy Application
+  #   needs: test
+  #   runs-on: self-hosted   # 👈 deploy runs on self-hosted runner
+
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
+
+  #     - name: Install dependencies
+  #       run: npm ci
+
+  #     - name: Deploy
+  #       run: |
+  #         echo "Starting deployment..."
+  #         mkdir -p /opt/app
+  #         cp -r . /opt/app
+  #         echo "Deployment successful"
