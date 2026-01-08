@@ -18,7 +18,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 'latest'
 
       - name: Install dependencies
         run: npm install
@@ -29,7 +29,7 @@ jobs:
   deploy:
     name: Deploy Application
     needs: test
-    runs-on: self-hosted   # 👈 deploy runs on self-hosted runner
+    runs-on: self-hosted   
 
     steps:
       - name: Checkout code
